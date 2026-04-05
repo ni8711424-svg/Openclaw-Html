@@ -3,56 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Claw 工作回顧與技術總結 (2026-04-05)</title>
+  <title>Claw 工作回顧與技術總結</title>
   <style>
     body { font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; line-height: 1.8; color: #24292e; background: #f6f8fa; }
     .container { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     h1 { color: #0366d6; border-bottom: 2px solid #eaecef; padding-bottom: 10px; }
     h2 { color: #005cc5; margin-top: 30px; border-left: 5px solid #24292e; padding-left: 10px; }
-    h3 { color: #24292e; margin-top: 20px; }
     .log-box { background: #1e1e1e; color: #e0e0e0; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.9em; overflow-x: auto; }
     .highlight { background: #fff3cd; padding: 2px 5px; border-radius: 3px; }
-    .meta { color: #6a737d; font-size: 0.9em; margin-bottom: 30px; border-bottom: 1px solid #dfe2e5; padding-bottom: 10px; }
-    ul { margin-bottom: 15px; }
-    li { margin-bottom: 5px; }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Claw 工作回顧與技術總結</h1>
-    <div class="meta">
-      <p><strong>日期：</strong> 2026-04-04 至 2026-04-05</p>
-      <p><strong>對象：</strong> Sam (美味跳蚤)</p>
-      <p><strong>執行者：</strong> Claw (OpenClaw Main Agent)</p>
-    </div>
+    <p><strong>日期：</strong> 2026-04-04 至 2026-04-05 | <strong>對象：</strong> Sam</p>
 
-    <h2>1. HTML 報告自動化部署</h2>
-    <p>我們經歷了多種方案的嘗試，最終確立了最適合免費且穩定的流程：</p>
+    <h2>1. HTML 部署策略演進</h2>
     <ul>
-      <li><strong>嘗試一：Cloudflare Tunnel/Cloudflared</strong> - 雖然穩定，但需要複雜的帳號綁定與 API Token 設定。</li>
-      <li><strong>嘗試二：ngrok</strong> - 免費版需要註冊並取得 Auth Token，且連結有時效性。</li>
-      <li><strong>最終方案：GitHub Pages</strong> - 透過 <span class="highlight">gh-pages</span> 分支配合 GitHub Pages 功能，達成永久連結與自動化更新。</li>
-    </ul>
-    <div class="log-box">操作重點：將 Repository 設為 Public，並在 Settings > Pages 選擇 gh-pages 分支。</div>
-
-    <h2>2. SSH 金鑰與自動化環境</h2>
-    <p>為了讓 Claw 能在背景自動推送程式碼，我們設定了 Mac mini 的 SSH 環境：</p>
-    <ul>
-      <li>產生專屬 SSH Key: <code>~/.ssh/id_ed25519_github</code></li>
-      <li>設定 Git Remote 為 SSH 模式: <code>git@github.com:ni8711424-svg/Openclaw-Html.git</code></li>
-      <li>利用 <code>ssh-add</code> 確保金鑰載入，解決 Host key verification 問題。</li>
+      <li><strong>Cloudflare Tunnel：</strong> 嘗試過，但 API Token 權限設定複雜。</li>
+      <li><strong>ngrok：</strong> 連結有時效性，不適合長期展示。</li>
+      <li><strong>GitHub Pages（最終方案）：</strong> 設為 Public Repo 並使用 <span class="highlight">gh-pages</span> 分支，達成永久連結。</li>
     </ul>
 
-    <h2>3. Claw 操作規範（重要）</h2>
-    <p>根據 Sam 的指令，Claw 必須嚴格遵守以下輸出格式：</p>
+    <h2>2. SSH 金鑰與自動化</h2>
     <ul>
-      <li><strong>連結格式：</strong> 所有提供的網址或連結，前後「不加引號」或「方括號」，確保在 Discord 等通訊軟體中可直接點選。</li>
-      <li><strong>主動執行：</strong> 除非涉及安全紅線（如登入個人帳號），否則 Claw 應直接在終端機執行指令，而非提供指令給 Sam 手動操作。</li>
-      <li><strong>表格呈現：</strong> 優先使用 HTML 格式呈現表格資料。</li>
+      <li>產生專屬金鑰: <code>~/.ssh/id_ed25519_github</code></li>
+      <li>設定 Git Remote: <code>git@github.com:ni8711424-svg/Openclaw-Html.git</code></li>
+      <li>解決 Host key verification 問題，實現背景自動推送。</li>
     </ul>
 
-    <h2>4. 下一步計畫</h2>
-    <p>Sam 正在規劃多益練習 App 與自動化流水線（AI + 股票 + Obsidian）。未來 HTML 報告將會包含更多動態資料分析（如 SPC 良率分析）。</p>
+    <h2>3. Claw 操作規範</h2>
+    <ul>
+      <li><strong>連結格式：</strong> 網址前後不加引號或方括號，確保可直接點選。</li>
+      <li><strong>主動執行：</strong> 直接在終端機執行指令，減少 Sam 的手動操作。</li>
+    </ul>
   </div>
 </body>
 </html>
