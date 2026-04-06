@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Claw 工作回顧與技術總結</title>
+  <title>Claw 工作回顧與技術總結 (04-04 ~ 04-05)</title>
   <style>
     body { font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; line-height: 1.8; color: #24292e; background: #f6f8fa; }
     .container { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
@@ -11,31 +11,33 @@
     h2 { color: #005cc5; margin-top: 30px; border-left: 5px solid #24292e; padding-left: 10px; }
     .log-box { background: #1e1e1e; color: #e0e0e0; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.9em; overflow-x: auto; }
     .highlight { background: #fff3cd; padding: 2px 5px; border-radius: 3px; }
+    code { background: #eaecef; padding: 2px 5px; border-radius: 3px; font-size: 0.9em; }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Claw 工作回顧與技術總結</h1>
-    <p><strong>日期：</strong> 2026-04-04 至 2026-04-05 | <strong>對象：</strong> Sam</p>
+    <p><strong>日期：</strong> 2026-04-04 至 2026-04-05 | <strong>對象：</strong> Sam (美味跳蚤)</p>
 
     <h2>1. HTML 部署策略演進</h2>
     <ul>
-      <li><strong>Cloudflare Tunnel：</strong> 嘗試過，但 API Token 權限設定複雜。</li>
-      <li><strong>ngrok：</strong> 連結有時效性，不適合長期展示。</li>
-      <li><strong>GitHub Pages（最終方案）：</strong> 設為 Public Repo 並使用 <span class="highlight">gh-pages</span> 分支，達成永久連結。</li>
+      <li><strong>Cloudflare Tunnel：</strong> 初期嘗試，但 API Token 權限複雜，且在 Discord 環境下無法完成互動授權。</li>
+      <li><strong>ngrok：</strong> 連結有時效性，不適合長期展示報告。</li>
+      <li><strong>GitHub Pages（最終方案）：</strong> 將 Repo 設為 <span class="highlight">Public</span>，並透過 <code>gh-pages</code> 分支。此方案永久免費、連結固定。</li>
     </ul>
 
-    <h2>2. SSH 金鑰與自動化</h2>
+    <h2>2. SSH 金鑰與自動化環境</h2>
     <ul>
-      <li>產生專屬金鑰: <code>~/.ssh/id_ed25519_github</code></li>
-      <li>設定 Git Remote: <code>git@github.com:ni8711424-svg/Openclaw-Html.git</code></li>
-      <li>解決 Host key verification 問題，實現背景自動推送。</li>
+      <li><strong>金鑰產生：</strong> 建立專屬金鑰 <code>~/.ssh/id_ed25519_github</code>。</li>
+      <li><strong>Remote 設定：</strong> 指向 <code>git@github.com:ni8711424-svg/Openclaw-Html.git</code>。</li>
+      <li><strong>自動化修正：</strong> 透過 <code>ssh-add</code> 與 <code>StrictHostKeyChecking=no</code> 解決背景推送的驗證問題。</li>
     </ul>
 
-    <h2>3. Claw 操作規範</h2>
+    <h2>3. Claw 操作規範（重要）</h2>
     <ul>
-      <li><strong>連結格式：</strong> 網址前後不加引號或方括號，確保可直接點選。</li>
-      <li><strong>主動執行：</strong> 直接在終端機執行指令，減少 Sam 的手動操作。</li>
+      <li><strong>連結格式：</strong> 網址前後<strong>不加引號或方括號</strong>，確保在 Discord 可直接點選。</li>
+      <li><strong>主動執行：</strong> 除非涉及安全紅線，否則直接在終端機執行指令，不勞煩 Sam 動手。</li>
+      <li><strong>表格呈現：</strong> 優先使用 HTML 格式呈現。</li>
     </ul>
   </div>
 </body>
